@@ -1,40 +1,41 @@
-<div class="customer-list">
-  <h1>Customers</h1>
-  <a routerLink="/customers/create">New customer</a>
-  <table class="table-auto hover:table-auto">
+<div class="customer-list overflow-x-auto">
+  <table class="min-w-full divide-y-2 divide-gray-200 bg-white text-sm">
     <thead>
     <tr>
-      <th>Id</th>
-      <th>First name</th>
-      <th>Last name</th>
-      <th>Email</th>
-      <th>Phone</th>
-      <th>Company</th>
-      <th>Address</th>
-      <th>State</th>
+      <th class="whitespace-nowrap px-4 py-2 font-medium text-gray-900">Id</th>
+      <th class="whitespace-nowrap px-4 py-2 font-medium text-gray-900">First name</th>
+      <th class="whitespace-nowrap px-4 py-2 font-medium text-gray-900">Last name</th>
+      <th class="whitespace-nowrap px-4 py-2 font-medium text-gray-900">Email</th>
+      <th class="whitespace-nowrap px-4 py-2 font-medium text-gray-900">Phone</th>
+      <th class="whitespace-nowrap px-4 py-2 font-medium text-gray-900">Company</th>
+      <th class="whitespace-nowrap px-4 py-2 font-medium text-gray-900">Address</th>
+      <th class="whitespace-nowrap px-4 py-2 font-medium text-gray-900">State</th>
+      <th class="px-4 py-2">
+        <a class="inline-block rounded bg-green-600 px-4 py-2 text-xs font-medium text-white hover:bg-green-700" routerLink="/customers/create">New customer</a>
+      </th>
     </tr>
     </thead>
-    <tbody>
+    <tbody class="divide-y divide-gray-200">
       @for (customer of (customers$ | async); track customer.id) {
         <tr>
-          <td>{{ customer.id }}</td>
-          <td>{{ customer.firstName }}</td>
-          <td>{{ customer.lastName }}</td>
-          <td>{{ customer.email }}</td>
-          <td>{{ customer.phoneNumber }}</td>
-          <td>{{ customer.companyName }}</td>
-          <td>
+          <td class="whitespace-nowrap px-4 py-2 font-medium text-gray-900 text-center">{{ customer.id }}</td>
+          <td class="whitespace-nowrap px-4 py-2 text-gray-700 text-center">{{ customer.firstName }}</td>
+          <td class="whitespace-nowrap px-4 py-2 text-gray-700 text-center">{{ customer.lastName }}</td>
+          <td class="whitespace-nowrap px-4 py-2 text-gray-700 text-center">{{ customer.email }}</td>
+          <td class="whitespace-nowrap px-4 py-2 text-gray-700 text-center">{{ customer.phoneNumber }}</td>
+          <td class="whitespace-nowrap px-4 py-2 text-gray-700 text-center">{{ customer.companyName }}</td>
+          <td class="whitespace-nowrap px-4 py-2 text-gray-700">
             {{ customer.address }}<br>
             {{ customer.zipCode }} {{ customer.city }}<br>
             {{ customer.country }}
           </td>
-          <td>{{ customer.state }}</td>
-          <td>
-            <a routerLink="/customers/{{customer.id}}">See profile</a>
+          <td class="whitespace-nowrap px-4 py-2 text-gray-700 text-center">{{ customer.state }}</td>
+          <td class="whitespace-nowrap px-4 py-2 text-center">
+            <a class="inline-block rounded bg-indigo-600 px-4 py-2 text-xs font-medium text-white hover:bg-indigo-700" routerLink="/customers/{{customer.id}}">See profile</a>
           </td>
         </tr>
       } @empty {
-        <tr>There is no customer.</tr>
+        <tr class="whitespace-nowrap px-4 py-2 text-gray-700 text-center">There is no customer.</tr>
       }
     </tbody>
   </table>

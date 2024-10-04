@@ -10,13 +10,10 @@
       <th class="whitespace-nowrap px-4 py-2 font-medium text-gray-900">Tva</th>
       <th class="whitespace-nowrap px-4 py-2 font-medium text-gray-900">Total Exclude Tva</th>
       <th class="whitespace-nowrap px-4 py-2 font-medium text-gray-900">State</th>
-      <th class="px-4 py-2">
-        <a class="inline-block rounded bg-green-600 px-4 py-2 text-xs font-medium text-white hover:bg-green-700" routerLink="/orders/create">New order</a>
-      </th>
     </tr>
     </thead>
     <tbody class="divide-y divide-gray-200">
-      @for (order of (orders$ | async); track order.id) {
+      @if (order$ | async; as order) {
         <tr>
           <td class="whitespace-nowrap px-4 py-2 font-medium text-gray-900 text-center">{{ order.id }}</td>
           <td class="whitespace-nowrap px-4 py-2 text-gray-700 text-center">{{ order.serviceType }}</td>
@@ -27,11 +24,14 @@
           <td class="whitespace-nowrap px-4 py-2 text-gray-700 text-center">{{ order.totalExcludeTax }} </td>
           <td class="whitespace-nowrap px-4 py-2 text-gray-700 text-center">{{ order.state }}</td>
           <td class="whitespace-nowrap px-4 py-2 text-center">
-            <a class="inline-block rounded bg-indigo-600 px-4 py-2 text-xs font-medium text-white hover:bg-indigo-700" routerLink="/orders/{{order.id}}">See order</a>
+            <a class="inline-block rounded bg-indigo-600 px-4 py-2 text-xs font-medium text-white hover:bg-indigo-700" routerLink="edit">Edit order</a>
+          </td>
+          <td class="whitespace-nowrap px-4 py-2 text-gray-700 text-center">
+            <a class="inline-block rounded bg-red-600 px-4 py-2 text-xs font-medium text-white hover:bg-red-700 hover:cursor-pointer" (click)="onDeleteOrder()">Delete</a>
           </td>
         </tr>
-      } @empty {
-        <tr class="whitespace-nowrap px-4 py-2 text-gray-700 text-center">There is no order.</tr>
+      } @else {
+        <tr>There is no order.</tr>
       }
     </tbody>
   </table>

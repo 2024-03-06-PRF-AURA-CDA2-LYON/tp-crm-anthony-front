@@ -1,0 +1,39 @@
+<div class="max-w-lg mx-auto p-4 bg-gray-100 rounded-lg my-8">
+  <h2 class="text-xl font-semibold mb-4 text-center">Add a new order</h2>
+
+  <form (ngSubmit)="onSubmit()">
+    <div class="mb-4">
+      <label class="block text-sm font-medium">Type of service
+        <input [(ngModel)]="order.serviceType" name="serviceType" type="text" class="mt-1 block w-full p-2 border rounded" required>
+      </label>
+    </div>
+    <div class="mb-4">
+      <label class="block text-sm font-medium">Comment
+        <input [(ngModel)]="order.comment" name="comment" type="text" class="mt-1 block w-full p-2 border rounded" required>
+      </label>
+    </div>
+    <div class="mb-4">
+      <label class="block text-sm font-medium">Nb Days
+        <input [(ngModel)]="order.nbDays" name="nbDays" type="number" class="mt-1 block w-full p-2 border rounded" required>
+      </label>
+    </div>
+    <div class="mb-4">
+      <label class="block text-sm font-medium">Tva (%)
+        <input [(ngModel)]="order.tva" name="tva" type="number" class="mt-1 block w-full p-2 border rounded">
+      </label>
+    </div>
+    <div class="mb-4">
+      <label class="block text-sm font-medium">Tarif journalier (hors taxe)
+        <input [(ngModel)]="order.totalExcludeTax" name="totalExcludeTax" type="number" class="mt-1 block w-full p-2 border rounded">
+      </label>
+    </div>
+    <div class="mb-4">
+      <label class="block text-sm font-medium">Client Id
+        <input [(ngModel)]="order.clientId.id" name="clientId[id]" type="number" class="mt-1 block w-full p-2 border rounded">
+      </label>
+    </div>
+    <button type="submit" class="w-full bg-blue-500 text-white py-2 px-4 rounded hover:bg-blue-700">
+      Submit
+    </button>
+  </form>
+</div>

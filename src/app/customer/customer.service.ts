@@ -25,7 +25,6 @@ export class CustomerService {
   }
 
   update(id: string, customer: Customer): Observable<Customer> {
-    console.log("updateservice : "+JSON.stringify(customer));
     return this.http.put<Customer>(`${this.apiUrl}/${id}`, customer);
   }
 
