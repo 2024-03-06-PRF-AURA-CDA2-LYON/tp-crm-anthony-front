@@ -1,0 +1,40 @@
+<table class="table-auto hover:table-auto">
+  <thead>
+  <tr>
+    <th>Id</th>
+    <th>First name</th>
+    <th>Last name</th>
+    <th>Email</th>
+    <th>Phone</th>
+    <th>Company</th>
+    <th>Address</th>
+    <th>State</th>
+  </tr>
+  </thead>
+  <tbody>
+    @if(customer$ | async; as customer){
+      <tr>
+        <td>{{ customer.id }}</td>
+        <td>{{ customer.firstName }}</td>
+        <td>{{ customer.lastName }}</td>
+        <td>{{ customer.email }}</td>
+        <td>{{ customer.phoneNumber }}</td>
+        <td>{{ customer.companyName }}</td>
+        <td>
+          {{ customer.address }}<br>
+          {{ customer.zipCode }} {{ customer.city }}<br>
+          {{ customer.country }}
+        </td>
+        <td>{{ customer.state }}</td>
+        <td>
+          <a routerLink="edit">Edit profile</a>
+        </td>
+        <td>
+          <a class="inline-block bg-blue-500 text-white font-semibold py-2 px-4 rounded hover:bg-blue-700" (click)="onDeleteCustomer()">Delete</a>
+        </td>
+      </tr>
+    } @else {
+      <tr>There is no customer.</tr>
+    }
+  </tbody>
+</table>
